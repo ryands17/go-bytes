@@ -13,9 +13,9 @@ const (
 
 type (
 	GeneralUser struct {
-		ID       string
-		Name     string
-		UserType UserType
+		ID       string   `json:"id"`
+		Name     string   `json:"name"`
+		UserType UserType `json:"user_type"`
 	}
 
 	AdminUser GeneralUser
