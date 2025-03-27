@@ -8,6 +8,7 @@ import (
 	"github.com/ryands17/go-bytes/cmd/routines"
 	"github.com/ryands17/go-bytes/cmd/structures"
 	"github.com/ryands17/go-bytes/cmd/utils"
+	"github.com/ryands17/go-bytes/cmd/utils/bitmasks"
 )
 
 func main() {
@@ -42,4 +43,15 @@ func main() {
 
 	// goroutines fetch example
 	routines.FetchAllUsers(5)
+
+	// bitmasks example
+	permissions := bitmasks.READ
+	fmt.Println("Has read access:", permissions.Has(bitmasks.READ))
+
+	permissions.Set(bitmasks.WRITE)
+	fmt.Println("Has read access:", permissions.Has(bitmasks.READ))
+	fmt.Println("Has write access:", permissions.Has(bitmasks.WRITE))
+
+	permissions.Toggle(bitmasks.READ)
+	fmt.Println("Has read access:", permissions.Has(bitmasks.READ))
 }
