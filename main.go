@@ -54,4 +54,8 @@ func main() {
 
 	permissions.Toggle(bitmasks.READ)
 	fmt.Println("Has read access:", permissions.Has(bitmasks.READ))
+
+	// convert value to pointer
+	userPtr := utils.PointerTo(user)
+	utils.PrintJSON(*userPtr)
 }

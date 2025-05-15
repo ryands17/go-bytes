@@ -60,3 +60,7 @@ func CopyStructFields(dst, src any) {
 		}
 	}
 }
+
+func PointerTo[T any](value T) *T {
+	return &value
+}

@@ -25,7 +25,6 @@ run:
   # Default: wd
   relative-path-mode: gomod
 
-
 # This file contains only configs which differ from defaults.
 # All possible options can be found here https://github.com/golangci/golangci-lint/blob/HEAD/.golangci.reference.yml
 linters-settings:
@@ -156,8 +155,6 @@ linters-settings:
     # Disable analyzers by name.
     # Run `go tool vet help` to see all analyzers.
     # Default: []
-    disable:
-      - fieldalignment # too strict
     # Settings per analyzer.
     settings:
       shadow:
@@ -198,7 +195,7 @@ linters-settings:
   nolintlint:
     # Exclude following linters from requiring an explanation.
     # Default: []
-    allow-no-explanation: [ gocognit, lll ]
+    allow-no-explanation: [gocognit, lll]
     # Enable to require an explanation of nonzero length after each nolint directive.
     # Default: false
     require-explanation: true
@@ -246,7 +243,6 @@ linters-settings:
     # Enable/disable `os.TempDir()` detections.
     # Default: false
     os-temp-dir: true
-
 
 linters:
   disable-all: true
@@ -364,7 +360,6 @@ linters:
     #- thelper # detects golang test helpers without t.Helper() call and checks the consistency of test helpers
     #- wsl # [too strict and mostly code is not more readable] whitespace linter forces you to use empty lines
 
-
 issues:
   # Maximum count of issues with the same text.
   # Set to 0 to disable.
@@ -373,7 +368,7 @@ issues:
 
   exclude-rules:
     - source: "//noinspection"
-      linters: [ gocritic ]
+      linters: [gocritic]
     - path: "_test\\.go"
       linters:
         - bodyclose
