@@ -58,4 +58,8 @@ func main() {
 	// convert value to pointer
 	userPtr := utils.PointerTo(user)
 	utils.PrintJSON(*userPtr)
+
+	// marshalling struct to JSON manually
+	jsonBytes, _ := utils.MarshalStruct(user)
+	fmt.Println("Marshalled JSON:", string(jsonBytes))
 }
