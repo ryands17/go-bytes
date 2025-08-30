@@ -3,8 +3,10 @@ package main
 import (
 	"fmt"
 	"log"
+	"slices"
 
 	"github.com/ryands17/go-bytes/cmd/brands"
+	"github.com/ryands17/go-bytes/cmd/iterators"
 	"github.com/ryands17/go-bytes/cmd/routines"
 	"github.com/ryands17/go-bytes/cmd/structures"
 	"github.com/ryands17/go-bytes/cmd/utils"
@@ -62,4 +64,8 @@ func main() {
 	// marshalling struct to JSON manually
 	jsonBytes, _ := utils.MarshalStruct(user)
 	fmt.Println("Marshalled JSON:", string(jsonBytes))
+
+	// iterators with sequences
+	primeNumbers := iterators.Primes(iterators.NonZeroIntegers(100))
+	utils.PrintJSON(slices.Collect(primeNumbers))
 }
