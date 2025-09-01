@@ -27,7 +27,7 @@ func NonZeroIntegers(take int) iter.Seq[int] {
 }
 
 func isPrime(n int) bool {
-	if n <= 1 {
+	if n <= 2 {
 		return false
 	}
 
