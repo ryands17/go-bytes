@@ -4,8 +4,10 @@ import (
 	"fmt"
 	"log"
 	"slices"
+	"time"
 
 	"github.com/ryands17/go-bytes/cmd/brands"
+	"github.com/ryands17/go-bytes/cmd/builders"
 	"github.com/ryands17/go-bytes/cmd/iterators"
 	"github.com/ryands17/go-bytes/cmd/routines"
 	"github.com/ryands17/go-bytes/cmd/structures"
@@ -68,4 +70,20 @@ func main() {
 	// iterators with sequences
 	primeNumbers := iterators.Primes(iterators.NonZeroIntegers(100))
 	utils.PrintJSON(slices.Collect(primeNumbers))
+
+	// create a database client (the options pattern)
+	db1 := builders.NewDBClient(
+		builders.WithUrl("localhost:5432"),
+		builders.WithConnections(10),
+		builders.WithTimeout(10*time.Second),
+	)
+	db1.Connect()
+
+	// create a database client (the fluent pattern)
+	db2 := builders.NewDBClientFluent().
+		WithURL("localhost:5432").
+		WithConnections(10).
+		WithTimeout(10 * time.Second).
+		Build()
+	db2.Connect()
 }
