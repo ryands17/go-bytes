@@ -86,4 +86,21 @@ func main() {
 		WithTimeout(10 * time.Second).
 		Build()
 	db2.Connect()
+
+	// in-memory cache with TTL
+	cache := utils.NewCache(3*time.Second, nil)
+
+	if err = cache.Set("key1", "value1", nil); err != nil {
+		log.Fatalf("Failed to set cache: %v", err)
+	}
+
+	if value, found := cache.Get("key1"); found {
+		fmt.Println("Cache hit for key1: ", value)
+	}
+
+	// expire key1 after 3 seconds
+	time.Sleep(3 * time.Second)
+	if _, found := cache.Get("key1"); !found {
+		fmt.Println("key1 has expired from cache")
+	}
 }
