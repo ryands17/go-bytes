@@ -15,7 +15,7 @@ type (
 	cache struct {
 		cacheMap   map[string]item
 		quit       chan struct{}
-		mx         sync.Mutex
+		mx         sync.RWMutex
 		defaultTTL time.Duration
 	}
 )
@@ -69,8 +69,8 @@ func (c *cache) Set(key string, value any, ttl *time.Duration) error {
 }
 
 func (c *cache) Get(key string) (any, bool) {
-	c.mx.Lock()
-	defer c.mx.Unlock()
+	c.mx.RLock()
+	defer c.mx.RUnlock()
 
 	it, exists := c.cacheMap[key]
 	if !exists || (it.ttl > 0 && time.Now().UnixNano() > it.ttl) {

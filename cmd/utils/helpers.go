@@ -45,7 +45,8 @@ func PrintJSON(obj any) {
 //	src := Source{Name: "John", Age: 30, Email: "john@example.com"}
 //	dst := Destination{}
 //	CopyStructFields(&dst, &src)
-//	// dst now contains {Name: "John", Age: 30, Phone: ""}
+//
+// dst now contains {Name: "John", Age: 30, Phone: ""}
 func CopyStructFields(dst, src any) {
 	srcVal := reflect.ValueOf(src).Elem()
 	dstVal := reflect.ValueOf(dst).Elem()
