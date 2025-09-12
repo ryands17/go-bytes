@@ -8,6 +8,7 @@ import (
 
 	"github.com/ryands17/go-bytes/cmd/brands"
 	"github.com/ryands17/go-bytes/cmd/builders"
+	"github.com/ryands17/go-bytes/cmd/features"
 	"github.com/ryands17/go-bytes/cmd/iterators"
 	"github.com/ryands17/go-bytes/cmd/routines"
 	"github.com/ryands17/go-bytes/cmd/structures"
@@ -103,4 +104,8 @@ func main() {
 	if _, found := cache.Get("key1"); !found {
 		fmt.Println("key1 has expired from cache")
 	}
+
+	// build flags example
+	// to get premium features, run: go run -tags=premium main.go or go build -tags=premium
+	fmt.Printf("Features available: %+v\n", features.AvailableFeatures())
 }
